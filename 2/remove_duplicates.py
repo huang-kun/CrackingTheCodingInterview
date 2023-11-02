@@ -1,8 +1,11 @@
 
 from node import *
 
+"""
+使用额外集合储存链表值
+"""
+
 def remove_duplicates(node):
-    # 使用额外集合储存链表值
     if node is None:
         return
     
@@ -26,14 +29,41 @@ def recurs_remove_duplicates(node, prev, cache):
     recurs_remove_duplicates(curr.next, curr, cache)
 
 
+"""
+如果题目要求不使用额外空间，根据提示使用双指针。
+先写伪代码，明确思路
+func remove_duplicates(node):
+    for p in head..tail:
+        for q in (p+1)..tail:
+            if p == q:
+                remove(q)
+"""
+
 def remove_duplicates_v2(node):
-    # 不使用额外空间，根据提示使用双指针
-    pass
+    if node is None:
+        return
+    
+    base = node
+    curr = base.next
+    prev = base
+
+    while base:
+        while curr:
+            if base.value == curr.value:
+                prev.next = curr.next
+                curr = curr.next
+            else:
+                prev = curr
+                curr = curr.next
+        
+        base = base.next
+        curr = base.next if base else None
+        prev = base
 
 
 def check(a, exp):
     n = list_to_nodes(a)
-    remove_duplicates(n)
+    remove_duplicates_v2(n)
     a1 = nodes_to_list(n)
     assert a1 == exp, f"remove duplicates failed: {a} -> {exp}, actual result: {a1}"
 
