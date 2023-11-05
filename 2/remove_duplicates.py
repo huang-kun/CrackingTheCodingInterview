@@ -1,5 +1,5 @@
 
-from node import *
+from listnode import *
 
 """
 使用额外集合储存链表值
@@ -10,7 +10,7 @@ def remove_duplicates(node):
         return
     
     cache = set()
-    cache.add(node.value)
+    cache.add(node.val)
 
     recurs_remove_duplicates(node.next, node, cache)
 
@@ -19,11 +19,11 @@ def recurs_remove_duplicates(node, prev, cache):
         return
     
     deleted = False
-    if node.value in cache:
+    if node.val in cache:
         prev.next = node.next
         deleted = True
     else:
-        cache.add(node.value)
+        cache.add(node.val)
 
     curr = node if not deleted else prev
     recurs_remove_duplicates(curr.next, curr, cache)
@@ -49,7 +49,7 @@ def remove_duplicates_v2(node):
 
     while base:
         while curr:
-            if base.value == curr.value:
+            if base.val == curr.val:
                 prev.next = curr.next
                 curr = curr.next
             else:

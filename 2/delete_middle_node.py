@@ -1,5 +1,5 @@
 
-from node import *
+from listnode import *
 
 """
 迭代遍历
@@ -10,7 +10,7 @@ def delete_middle_node(node):
 
     while curr:
         if curr.next:
-            curr.value = curr.next.value
+            curr.val = curr.next.val
         elif prev:
             prev.next = None
         prev = curr
@@ -29,7 +29,7 @@ def delete_middle_node_recur(node, prev):
     if node is None:
         return
     if node.next:
-        node.value = node.next.value
+        node.val = node.next.val
     elif prev:
         prev.next = None
     delete_middle_node_recur(node.next, node)

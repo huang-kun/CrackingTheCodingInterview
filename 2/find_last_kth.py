@@ -1,5 +1,5 @@
 
-from node import *
+from listnode import *
 
 """
 快慢双指针
@@ -48,7 +48,7 @@ def check(a, k, exp):
     result = find_last_kth_recur(head, k)
     value = None
     if result is not None:
-        value = result.value
+        value = result.val
     assert value == exp, f"find last kth failed: {a}, {k} -> {exp}, actual result: {value}"
 
 

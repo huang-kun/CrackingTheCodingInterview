@@ -1,9 +1,9 @@
 
-class Node:
+class ListNode:
     
-    def __init__(self):
-        self.value = None
-        self.next = None
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 def list_to_nodes(alist):
@@ -11,8 +11,8 @@ def list_to_nodes(alist):
     prev = None
 
     for elem in alist:
-        node = Node()
-        node.value = elem
+        node = ListNode()
+        node.val = elem
         
         if head is None:
             head = node
@@ -33,7 +33,7 @@ def nodes_to_list(node):
     curr = node
     
     while curr:
-        alist.append(curr.value)
+        alist.append(curr.val)
         curr = curr.next
     
     return alist
@@ -47,7 +47,7 @@ def print_node(node):
     curr = node
     
     while curr:
-        text += str(curr.value)
+        text += str(curr.val)
         if curr.next:
             text += "->"
         curr = curr.next
